@@ -13,7 +13,7 @@ const Technologies = ({technologies, technologiesImg}) => {
             <div className='flex flex-wrap gap-5 ml-2'>
                 {technologiesImg &&
                     technologiesImg.map((technologie, id) => (<Image 
-                        className='object-scale-down h-10'
+                        className='object-scale-down h-10 transition hover:-translate-y-1 hover:scale-110 duration-300'
                         key={id} 
                         src={"/technologies/"+technologie}
                         width={40}
