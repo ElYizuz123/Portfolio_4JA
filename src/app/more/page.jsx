@@ -16,12 +16,12 @@ const Page = ({title, description, link, technologies, technologiesImg, galeryIm
         "prisma.png"
     ]
     galeryImg = [
-        {"img":"form.jpg","desc":"Formulario personal"},
-        {"img":"nosotras.jpg","desc":"Nosotras"},
-        {"img":"tienda.jpg","desc":"Tienda"},
-        {"img":"form.jpg","desc":"Formulario personal"},
-        {"img":"nosotras.jpg","desc":"Nosotras"},
-        {"img":"tienda.jpg","desc":"Tienda"},
+        {"img":"gato1.jpg","desc":"Formulario personal"},
+        {"img":"gato2.jpg","desc":"Nosotras"},
+        {"img":"gato3.PNG","desc":"Tienda"},
+        {"img":"gato4.jpg","desc":"Formulario personal"},
+        {"img":"gato5.jpg","desc":"Nosotras"},
+        {"img":"gato6.jpg","desc":"Tienda"},
     ]
     link="https://www.google.com"
 

@@ -1,6 +1,5 @@
 "use client"
-import TypewriterComponent from 'typewriter-effect';
-import TypeWritter from 'typewriter-effect'
+
 
 const Desc = ({description, link}) => {
     const handleButtonClick = () => {

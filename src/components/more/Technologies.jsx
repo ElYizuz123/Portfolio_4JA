@@ -16,6 +16,7 @@ const Technologies = ({technologies, technologiesImg}) => {
                         className='object-scale-down h-10 transition hover:-translate-y-1 hover:scale-110 duration-300'
                         key={id} 
                         src={"/technologies/"+technologie}
+                        alt = {"Technologie"+id}
                         width={40}
                         height={40}
                         />))
