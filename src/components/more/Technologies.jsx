@@ -1,8 +1,25 @@
 "use client"
-import Image from 'next/image'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { motion, useAnimation } from "framer-motion";
 
 const Technologies = ({technologies, technologiesImg}) => {
+
+  const controls = useAnimation();
+  const [isTime, setIsTime] = useState(false)
+
+    const containerVariants = {
+      hidden: { opacity: 0 },
+      show: {
+        opacity: 1,
+        transition: {
+          staggerChildren: 0.25,
+        },
+      },
+    };
+    const gridSquareVariants = {
+      hidden: { scale:0, rotate:180 }, // Comienza un poco más abajo y con opacidad 0.
+      show: { rotate: 360, scale: 1 }, // Anima hacia la opacidad 1 y su posición original en y.
+    };
 
 
     function delay(ms) {
@@ -22,10 +39,19 @@ const Technologies = ({technologies, technologiesImg}) => {
           ]
           await delay(15)
         }
+        const up = !isTime
+        setIsTime(up)
       }
+
+      useEffect(() =>{
+        if(isTime){
+          controls.start("show");
+        }
+      }, [controls, isTime])
       
       useEffect(() => {
         type(technologies, "technologies")
+        
       }, [technologies])
   
   return (
@@ -36,19 +62,25 @@ const Technologies = ({technologies, technologiesImg}) => {
                 <span id="technologies" className='text-white font-bold'></span>
                 <span className='text-[#00AFFF] font-bold'>{"/>"}</span>
             </p>
-            <div className='flex flex-wrap gap-5 ml-2'>
+            <motion.div className='flex flex-wrap gap-5 ml-2' animate={controls} variants={containerVariants} initial="hidden">
                 {technologiesImg &&
-                    technologiesImg.map((technologie, id) => (<Image 
-                        className='object-scale-down h-10 transition hover:-translate-y-1 hover:scale-110 duration-300'
-                        key={id} 
-                        src={"/technologies/"+technologie}
-                        alt = {"Technologie"+id}
-                        width={40}
-                        height={40}
-                        />))
+                    technologiesImg.map((technologie, id) => (
+                      <motion.div 
+                        key={id}
+                        variants={gridSquareVariants}>
+                        <motion.img 
+                          className='object-scale-down h-10 transition hover:-translate-y-1 hover:scale-110 duration-300'
+                          src={"/technologies/"+technologie}
+                          alt = {"Technologie"+id}
+                          width={40}
+                          height={40}
+                        />
+                      </motion.div>
+                      
+                      ))
                 
                 }
-            </div>
+            </motion.div>
             
         </div>
   )
